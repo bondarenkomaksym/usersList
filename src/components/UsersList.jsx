@@ -2,14 +2,13 @@ import React from 'react';
 import Pagination from './Pagination';
 import User from './User';
 import Search from './Search';
-import { filteredUsers, filterTextSelector } from "./users.selectors";
-import * as usersActions from "./users.actions";
+import { filteredUsers } from "./users.selectors";
 import { page } from './pages.actions';
 import { currentPageState } from './page.state';
 import { connect } from "react-redux";
 
 
-const UsersList = ({ currentPage, usersList, page, filterText, textInputFromFilter }) => {
+const UsersList = ({ currentPage, usersList, page }) => {
 
   let itemsPerPage = 10;
 
@@ -28,10 +27,7 @@ const UsersList = ({ currentPage, usersList, page, filterText, textInputFromFilt
   // debugger;
   return (
     <div>
-      <Search
-        filterText={filterText}
-        onChange={textInputFromFilter}
-      />
+      <Search />
       <Pagination
         itemsPerPage={itemsPerPage}
         startIndex={startIndex}
@@ -58,13 +54,11 @@ const UsersList = ({ currentPage, usersList, page, filterText, textInputFromFilt
 
 const mapDispatch = {
   page,
-  textInputFromFilter: usersActions.textInputFromFilter,
 }
 
 const mapState = state => {
   return {
     usersList: filteredUsers(state),
-    filterText: filterTextSelector(state),
     currentPage: currentPageState(state),
   }
 }
