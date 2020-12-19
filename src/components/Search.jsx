@@ -2,13 +2,20 @@ import React from "react";
 import * as usersActions from "./users.actions";
 import { connect } from "react-redux";
 
-const Search = ({ textInputFromFilter }) => {
+const Search = ({ textInputFromFilter, setCurrentPage }) => {
+
+  const onChange = (event) => {
+    textInputFromFilter(event.target.value);
+    setCurrentPage(0);
+  }
+
   return (
     <div className="filter">
       <input type="text"
         className="filter__input"
         placeholder="Search"
-        onChange={(event) => textInputFromFilter(event.target.value)} />
+        onChange={onChange}
+      />
     </div>
   )
 }

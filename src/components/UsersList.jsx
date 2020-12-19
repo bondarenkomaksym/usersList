@@ -19,7 +19,9 @@ const UsersList = ({ usersList }) => {
   // debugger;
   return (
     <div>
-      <Search />
+      <Search
+        setCurrentPage={setCurrentPage}
+      />
       <Pagination
         itemsPerPage={itemsPerPage}
         startIndex={startIndex}
