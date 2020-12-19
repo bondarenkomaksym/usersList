@@ -20,6 +20,17 @@ module.exports = (env, argv) => {
           use: ["babel-loader"]
         },
         {
+          test: /\.svg$/,
+          use: [
+            {
+              loader: 'svg-url-loader',
+              options: {
+                limit: 10000,
+              },
+            },
+          ],
+        },
+        {
           test: /.s?css$/,
           use: [
             isProduction ? MiniCssExtractPlugin.loader : "style-loader",

@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Pagination from './Pagination';
 import User from './User';
-
+import Search from './Search';
+import { filteredUsers, filterTextSelector } from "./users.selectors";
+import * as usersActions from "./users.actions";
 import { page } from './pages.actions';
-import { usersState, currentPageState } from './page.state';
+import { currentPageState } from './page.state';
 import { connect } from "react-redux";
 
 
-const UsersList = ({ currentPage, users, page }) => {
+const UsersList = ({ currentPage, usersList, page, filterText, textInputFromFilter }) => {
 
   let itemsPerPage = 10;
 
@@ -22,10 +24,14 @@ const UsersList = ({ currentPage, users, page }) => {
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
-  const usersToDisplay = users.slice(startIndex, endIndex);
+  const usersToDisplay = usersList.slice(startIndex, endIndex);
   // debugger;
   return (
     <div>
+      <Search
+        filterText={filterText}
+        onChange={textInputFromFilter}
+      />
       <Pagination
         itemsPerPage={itemsPerPage}
         startIndex={startIndex}
@@ -35,10 +41,10 @@ const UsersList = ({ currentPage, users, page }) => {
       />
       <ul className="users">
         {usersToDisplay.map((user) => {
-          const userNumber = users.indexOf(user);
+          const userNumber = usersList.indexOf(user);
           const randomId = Math.round(Math.random() * 100000000);
           return (
-            <User key={randomId} {...user}>
+            <User key={randomId} {...user} >
               {userNumber + 1}
             </User>
           )
@@ -51,12 +57,14 @@ const UsersList = ({ currentPage, users, page }) => {
 
 
 const mapDispatch = {
-  page
+  page,
+  textInputFromFilter: usersActions.textInputFromFilter,
 }
 
 const mapState = state => {
   return {
-    users: usersState(state),
+    usersList: filteredUsers(state),
+    filterText: filterTextSelector(state),
     currentPage: currentPageState(state),
   }
 }
