@@ -2,13 +2,14 @@ import React from 'react';
 import { currentPageState } from './page.state';
 import { filteredUsers } from "./users.selectors";
 import { connect } from "react-redux";
+import users from '../resources/data.json';
 
 const Pagination = ({ goPrev, goNext, currentPage, usersList, itemsPerPage, endIndex, startIndex }) => {
 
   let isPrevPageAvaible = false;
   let isNextPageAvaible = false;
 
-  const rest = endIndex % usersList.length;
+  const rest = endIndex % users.length;
   const lastUser = rest === endIndex ? 0 : rest;
 
   const totalPages = Math.ceil(usersList.length / itemsPerPage);
