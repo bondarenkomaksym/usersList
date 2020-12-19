@@ -1,10 +1,9 @@
 import React from 'react';
-import { currentPageState } from './page.state';
 import { filteredUsers } from "./users.selectors";
 import { connect } from "react-redux";
 import users from '../resources/data.json';
 
-const Pagination = ({ goPrev, goNext, currentPage, usersList, itemsPerPage, endIndex, startIndex }) => {
+const Pagination = ({ setCurrentPage, currentPage, usersList, itemsPerPage, endIndex, startIndex }) => {
 
   let isPrevPageAvaible = false;
   let isNextPageAvaible = false;
@@ -19,11 +18,11 @@ const Pagination = ({ goPrev, goNext, currentPage, usersList, itemsPerPage, endI
 
   return (
     <div className="pagination">
-      <button className="btn" onClick={goPrev} disabled={isPrevPageAvaible}>
+      <button className="btn" onClick={() => setCurrentPage(page => page - 1)} disabled={isPrevPageAvaible}>
         {isPrevPageAvaible ? "" : "<"}
       </button>
       <span className="pagination__page">{startIndex + 1} - {endIndex - lastUser}</span>
-      <button className="btn" onClick={goNext} disabled={isNextPageAvaible}>
+      <button className="btn" onClick={() => setCurrentPage(page => page + 1)} disabled={isNextPageAvaible}>
         {isNextPageAvaible ? "" : ">"}
       </button>
     </div>
@@ -34,7 +33,6 @@ const Pagination = ({ goPrev, goNext, currentPage, usersList, itemsPerPage, endI
 const mapState = state => {
   return {
     usersList: filteredUsers(state),
-    currentPage: currentPageState(state),
   }
 }
 

@@ -7,7 +7,7 @@ import thirdicon from '../resources/medals/3rd.svg';
 const User = (props) => {
   // debugger;
   const rawSort = users.sort((a, b) => b.pageviews - a.pageviews);
-  // const first = <img src={firsticon} />;
+
   return (
     <li className="user">
       <div className="user__medal">{

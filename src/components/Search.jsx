@@ -7,11 +7,11 @@ const Search = ({ textInputFromFilter }) => {
     <div className="filter">
       <input type="text"
         className="filter__input"
+        placeholder="Search"
         onChange={(event) => textInputFromFilter(event.target.value)} />
     </div>
   )
 }
-
 
 const mapDispatch = {
   textInputFromFilter: usersActions.textInputFromFilter,

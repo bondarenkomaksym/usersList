@@ -1,24 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Pagination from './Pagination';
 import User from './User';
 import Search from './Search';
 import { filteredUsers } from "./users.selectors";
-import { page } from './pages.actions';
-import { currentPageState } from './page.state';
 import { connect } from "react-redux";
 
 
-const UsersList = ({ currentPage, usersList, page }) => {
+const UsersList = ({ usersList }) => {
 
   let itemsPerPage = 10;
 
-  const goPrev = () => {
-    page(currentPage - 1);
-  };
-
-  const goNext = () => {
-    page(currentPage + 1);
-  };
+  const [currentPage, setCurrentPage] = useState(0);
 
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -32,8 +24,8 @@ const UsersList = ({ currentPage, usersList, page }) => {
         itemsPerPage={itemsPerPage}
         startIndex={startIndex}
         endIndex={endIndex}
-        goNext={goNext}
-        goPrev={goPrev}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
       />
       <ul className="users">
         {usersToDisplay.map((user) => {
@@ -52,18 +44,13 @@ const UsersList = ({ currentPage, usersList, page }) => {
 }
 
 
-const mapDispatch = {
-  page,
-}
-
 const mapState = state => {
   return {
     usersList: filteredUsers(state),
-    currentPage: currentPageState(state),
   }
 }
 
 
-const ConnectedUsers = connect(mapState, mapDispatch)(UsersList);
+const ConnectedUsers = connect(mapState, null)(UsersList);
 
 export default ConnectedUsers;
