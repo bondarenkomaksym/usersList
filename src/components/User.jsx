@@ -1,11 +1,12 @@
 import React from "react";
 
-const User = ({ name, count_pub, pageviews }) => {
+const User = (props) => {
   return (
-    <li key={pageviews} className="user">
-      <span className="user__name">{name}</span>
-      <span className="user__pub">{count_pub}</span>
-      <span className="user__pageviews">{pageviews}</span>
+    <li className="user">
+      <div className="user__number">{props.children}</div>
+      <span className="user__name">{props.name}</span>
+      <span className="user__pub">{props.count_pub}</span>
+      <span className="user__pageviews">{props.pageviews}</span>
     </li>
   );
 };

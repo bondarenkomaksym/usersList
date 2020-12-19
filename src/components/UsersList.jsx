@@ -34,9 +34,16 @@ const UsersList = ({ currentPage, users, page }) => {
         goPrev={goPrev}
       />
       <ul className="users">
-        {usersToDisplay.map((user) => (
-          <User key={user.pageviews} {...user} />
-        ))}
+        {usersToDisplay.map((user) => {
+          const userNumber = users.indexOf(user);
+          const randomId = Math.round(Math.random() * 100000000);
+          return (
+            <User key={randomId} {...user}>
+              {userNumber + 1}
+            </User>
+          )
+        })
+        }
       </ul>
     </div>
   );

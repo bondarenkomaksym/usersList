@@ -33,7 +33,6 @@ const mapState = state => {
   return {
     users: usersState(state),
     currentPage: currentPageState(state),
-
   }
 }
 
