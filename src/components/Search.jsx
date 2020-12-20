@@ -5,9 +5,12 @@ import { connect } from "react-redux";
 const Search = ({ textInputFromFilter, setCurrentPage }) => {
 
   const onChange = (event) => {
-    textInputFromFilter(event.target.value.replace(/[A-Za-z0-9.!@?#"$%&:;()№~'` *\+,\/;\-=[\\\]\^_{|}<>]/gi, ''));
+    event.target.value = event.target.value.replace(/[A-Za-z0-9.!@?#"$%&:;()№~'` *\+,\/;\-=[\\\]\^_{|}<>]/gi, '');
+    // event.target.value.match(/[а-яё]+/ig) ? textInputFromFilter(event.target.value) : textInputFromFilter('');
+    textInputFromFilter(event.target.value);
     setCurrentPage(0);
   }
+
 
   return (
     <div className="filter">
