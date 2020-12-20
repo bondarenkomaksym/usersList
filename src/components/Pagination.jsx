@@ -21,11 +21,11 @@ const Pagination = ({ setCurrentPage, currentPage, usersList, itemsPerPage, endI
   return (
     <div className="pagination">
       <button className="btn" onClick={() => setCurrentPage(page => page - 1)} disabled={isPrevPageAvaible}>
-        {isPrevPageAvaible ? "" : "<"}
+        {isPrevPageAvaible ? "" : <i class="fas fa-chevron-left"></i>}
       </button>
-      <span className="pagination__page">{startIndex + 1} - {endIndex - lastUser}</span>
+      <div className="pagination__page">{startIndex + 1} - {endIndex - lastUser}</div>
       <button className="btn" onClick={() => setCurrentPage(page => page + 1)} disabled={isNextPageAvaible}>
-        {isNextPageAvaible ? "" : ">"}
+        {isNextPageAvaible ? "" : <i class="fas fa-chevron-right"></i>}
       </button>
     </div>
   )

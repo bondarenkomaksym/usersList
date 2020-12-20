@@ -4,7 +4,7 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: rgb(220, 227, 230);
+  background-color: rgb(170, 176, 179);
 }
 
 #root {
@@ -26,6 +26,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+  border-radius: 0 0 8px 8px;
 }
 
 .user {
@@ -35,6 +36,7 @@ body {
   flex-grow: 1;
   background-color: rgb(248, 248, 248);
   border-bottom: 1px solid rgba(223, 223, 223, 0.712);
+  
 
   &__number{
     width: 5%;
@@ -75,11 +77,14 @@ body {
     width: 5%;
   }
   &__medal-icon {
-      height: 30px;
+      height: 35px;
   }
 }
 .user:nth-of-type(even){
   background-color: #eaecf0;
+}
+.user:nth-child(10){
+  border-radius: 0 0 8px 8px;
 }
 
 .filter{
@@ -109,17 +114,22 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &__page{
+    width: 60px;
+    text-align: center;
+  }
 }
 
 .btn {
+  display: grid;
+  place-items: center;
   height: 32px;
   color: #fff;
-  border-radius: 8px;
-  width: 64px;
+  width: 30px;
   outline: none;
   border: none;
   text-transform: uppercase;
-  padding: 8px;
   cursor: pointer;
   background-color: green;
 }
