@@ -8,20 +8,22 @@ const User = (props) => {
   // debugger;
   const rawSort = users.sort((a, b) => b.pageviews - a.pageviews);
 
+  let res = String(props.pageviews).split(/(?=(?:\d{3})+(?!\d))/).join(" ");
+
   let colors = [
-    '#F9D9FF',
-    '#E6DBFF',
-    '#FFDFDF',
-    '#A5DBEB',
-    '#EAFFEF',
-    '#DBEBFF',
-    '#CACAFF',
-    '#F7F9D0',
-    '#BDF4CB',
-    '#E6CCCC',
-    '#E9E9C0',
-    '#C0E0DA',
-    '#FFD9B7'
+    '#CB59E8',
+    '#4A9586',
+    '#B96F6F',
+    '#C06A45',
+    '#BABA21',
+    '#59955C',
+    '#6A6AFF',
+    '#2F74D0',
+    '#BC2EBC',
+    '#9669FE',
+    '#8C8CFF',
+    '#5EAE9E',
+    '#80B584'
   ];
   let random_color = colors[Math.floor(Math.random() * colors.length)];
 
@@ -39,7 +41,7 @@ const User = (props) => {
           : props.pageviews === rawSort[1].pageviews ? <img className="user__medal-icon" src={secondicon} />
             : props.pageviews === rawSort[2].pageviews ? <img className="user__medal-icon" src={thirdicon} /> : null
       }</div>
-      <div className="user__pageviews">{props.pageviews}</div>
+      <div className="user__pageviews">{res}</div>
     </div>
   );
 };

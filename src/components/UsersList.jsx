@@ -20,28 +20,37 @@ const UsersList = ({ usersList }) => {
   // debugger;
   return (
     <div className="main">
-      <Search
-        setCurrentPage={setCurrentPage}
-      />
-      <div className="users">
-        {usersToDisplay.map((user) => {
-          const userNumber = usersList.indexOf(user);
-          const randomId = Math.round(Math.random() * 100000000);
-          return (
-            <User key={randomId} {...user} >
-              {userNumber + 1}
-            </User>
-          )
-        })}
+      <div className="first">
+        <Search
+          setCurrentPage={setCurrentPage}
+        />
+        <div className="users">
+          <div className="users__invisible">
+            {usersToDisplay.map((user) => {
+              const userNumber = usersList.indexOf(user);
+              const randomId = Math.round(Math.random() * 100000000);
+              return (
+                <User key={randomId} {...user} >
+                  {userNumber + 1}
+                </User>
+              )
+            })}
+          </div>
+
+        </div>
+
+        <div className="second">
+          <Pagination
+            itemsPerPage={itemsPerPage}
+            startIndex={startIndex}
+            endIndex={endIndex}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+          />
+        </div>
       </div>
-      <Pagination
-        itemsPerPage={itemsPerPage}
-        startIndex={startIndex}
-        endIndex={endIndex}
-        setCurrentPage={setCurrentPage}
-        currentPage={currentPage}
-      />
     </div>
+
   );
 }
 
