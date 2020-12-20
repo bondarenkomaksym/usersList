@@ -8,29 +8,54 @@ body {
 
 #root {
   height: 100vh;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  display: grid;
+  place-items: center;
+}
+
+.main {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  // justify-content: space-between;
+  height: 620px;
+  width: 450px;
+  background-color: rgb(191, 207, 191);
 }
 
 .users {
-  list-style-type: none;
-  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .user {
-  margin: 8px;
-  width: 150px;
+  margin: 10px 0;
   display: flex;
-  
+  &__number{
+    width: 5%;
+  }
+  &__name-firstletter{
+    width: 10%;
+  }
+  &__np{
+    width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   &__pageviews {
+    width: 30%;
+    text-align: right;
       font-weight: 700;
       opacity: 0.5;
-      margin-left: auto;
   }
   &__pub {
       font-weight: 700;
       margin-right: 10px;
+  }
+  &__medal {
+    width: 5%;
   }
   &__medal-icon {
       height: 20px;
@@ -39,7 +64,7 @@ body {
 
 .pagination {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 

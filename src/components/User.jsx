@@ -9,19 +9,21 @@ const User = (props) => {
   const rawSort = users.sort((a, b) => b.pageviews - a.pageviews);
 
   return (
-    <li className="user">
+    <div className="user">
+      <div className="user__number">{props.children}</div>
+      <div className="user__name-firstletter">{props.name[0]}</div>
+      <div className="user__np">
+        <div className="user__name">{props.name}</div>
+        <div className="user__pub">{props.count_pub} публ.</div>
+      </div>
+
       <div className="user__medal">{
         props.pageviews === rawSort[0].pageviews ? <img className="user__medal-icon" src={firsticon} />
           : props.pageviews === rawSort[1].pageviews ? <img className="user__medal-icon" src={secondicon} />
             : props.pageviews === rawSort[2].pageviews ? <img className="user__medal-icon" src={thirdicon} /> : null
       }</div>
-
-      <div className="user__number">{props.children}</div>
-      <span className="user__name-firstletter">{props.name[0]}</span>
-      <span className="user__name">{props.name}</span>
-      <span className="user__pub">{props.count_pub}</span>
-      <span className="user__pageviews">{props.pageviews}</span>
-    </li>
+      <div className="user__pageviews">{props.pageviews}</div>
+    </div>
   );
 };
 

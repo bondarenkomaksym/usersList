@@ -18,18 +18,11 @@ const UsersList = ({ usersList }) => {
   const usersToDisplay = usersList.slice(startIndex, endIndex);
   // debugger;
   return (
-    <div>
+    <div className="main">
       <Search
         setCurrentPage={setCurrentPage}
       />
-      <Pagination
-        itemsPerPage={itemsPerPage}
-        startIndex={startIndex}
-        endIndex={endIndex}
-        setCurrentPage={setCurrentPage}
-        currentPage={currentPage}
-      />
-      <ul className="users">
+      <div className="users">
         {usersToDisplay.map((user) => {
           const userNumber = usersList.indexOf(user);
           const randomId = Math.round(Math.random() * 100000000);
@@ -38,9 +31,15 @@ const UsersList = ({ usersList }) => {
               {userNumber + 1}
             </User>
           )
-        })
-        }
-      </ul>
+        })}
+      </div>
+      <Pagination
+        itemsPerPage={itemsPerPage}
+        startIndex={startIndex}
+        endIndex={endIndex}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
     </div>
   );
 }
