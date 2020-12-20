@@ -13,11 +13,13 @@ const Search = ({ textInputFromFilter, setCurrentPage }) => {
 
   return (
     <div className="filter">
+      <i class="fas fa-search"></i>
       <input type="text"
         className="filter__input"
-        placeholder="Search"
+        placeholder="Поиск по имени автора"
         onChange={onChange}
       />
+
     </div>
   )
 }

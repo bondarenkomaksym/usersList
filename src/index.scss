@@ -4,13 +4,11 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(220, 227, 230);
 }
 
 #root {
   height: 100vh;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
   display: grid;
   place-items: center;
 }
@@ -18,10 +16,10 @@ body {
 .main {
   display: flex;
   flex-direction: column;
-  // justify-content: space-between;
   height: 620px;
   width: 450px;
-  background-color: rgb(191, 207, 191);
+  background-color: transparent;
+  border-radius: 8px;
 }
 
 .users {
@@ -31,35 +29,80 @@ body {
 }
 
 .user {
-  margin: 10px 0;
   display: flex;
+  align-items: center;
+  max-height: 55px;
+  flex-grow: 1;
+  background-color: rgb(248, 248, 248);
+  border-bottom: 1px solid rgba(223, 223, 223, 0.712);
+
   &__number{
     width: 5%;
+    display: grid;
+    font-size: 14px;
+    place-items: center;
   }
   &__name-firstletter{
-    width: 10%;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+    background-color: rgb(245, 239, 240);
+    border-radius: 50%;
   }
   &__np{
     width: 50%;
+    padding-left: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   &__pageviews {
     width: 30%;
+    padding-right: 20px;
+    padding-bottom: 15px;
     text-align: right;
-      font-weight: 700;
-      opacity: 0.5;
+    font-weight: 700;
+    opacity: 0.5;
   }
   &__pub {
       font-weight: 700;
       margin-right: 10px;
   }
   &__medal {
+    display: grid;
+    place-items: center;
     width: 5%;
   }
   &__medal-icon {
-      height: 20px;
+      height: 30px;
   }
+}
+.user:nth-of-type(even){
+  background-color: #eaecf0;
+}
+
+.filter{
+  display: flex;
+  align-items: center;
+  background-color: rgb(221, 221, 221);
+  border-radius: 8px 8px 0 0;
+  padding-left: 10px;
+
+  &__input{
+    flex: 1;
+    height: 45px;
+    border: none;
+    padding-left: 10px;
+    border-radius: 8px 8px 0 0;
+    outline: none;
+    background-color: transparent;
+  }
+}
+.filter > i {
+  position: relative;
+  font-size: 20px;
+  opacity: 0.5;
 }
 
 .pagination {
