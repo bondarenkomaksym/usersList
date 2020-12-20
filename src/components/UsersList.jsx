@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 
 const UsersList = ({ usersList }) => {
 
+
   let itemsPerPage = 10;
 
   const [currentPage, setCurrentPage] = useState(0);
