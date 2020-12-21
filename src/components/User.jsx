@@ -27,13 +27,18 @@ const User = (props) => {
   ];
   let random_color = colors[Math.floor(Math.random() * colors.length)];
 
+  let pub_color = props.count_pub === 0 ? {
+    color: "grey",
+    opacity: 0.3
+  } : null;
+
   return (
     <div className="user" >
       <div className="user__number">{props.children}</div>
       <div className="user__name-firstletter" style={{ backgroundColor: random_color }}>{props.name[0]}</div>
       <div className="user__np">
         <div className="user__name">{props.name}</div>
-        <div className="user__pub">{props.count_pub} публ.</div>
+        <div className="user__pub" style={pub_color}>{props.count_pub} публ.</div>
       </div>
 
       <div className="user__medal">{
