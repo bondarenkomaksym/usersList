@@ -1,12 +1,13 @@
 import users from '../resources/data.json';
-import { FILTER_USER } from './users.actions';
+import { FILTER_USER, SORT_USERNAME, SORT_USERVIEWS } from './users.actions';
 
 const initialState = {
   usersList: users,
   filterText: "",
+  isAscendingNames: false,
+  isAscendingViews: false,
 };
 
-// debugger;
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -15,6 +16,30 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         filterText: action.payload.textFromInput,
       };
+
+    case SORT_USERNAME: {
+      const copy = JSON.parse(JSON.stringify(state.usersList));
+      return {
+        ...state,
+        isAscendingNames: !state.isAscendingNames,
+        usersList: copy.sort((a, b) => {
+          const asc = state.isAscendingNames ? 1 : -1;
+          return asc * a.name.localeCompare(b.name);
+        }),
+      };
+    }
+    case SORT_USERVIEWS: {
+      const copyV = JSON.parse(JSON.stringify(state.usersList));
+      return {
+        ...state,
+        isAscendingViews: !state.isAscendingViews,
+        usersList: copyV.sort((a, b) => {
+          const ascV = state.isAscendingViews ? 1 : -1;
+          return ascV * a.pageviews.toString().localeCompare(b.pageviews.toString());
+        }),
+      };
+    }
+
     default:
       return state;
   }

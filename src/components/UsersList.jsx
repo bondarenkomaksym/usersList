@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Pagination from './Pagination';
 import User from './User';
 import Search from './Search';
+import Sort from './Sort';
 import { filteredUsers } from "./users.selectors";
 import { connect } from "react-redux";
 
@@ -17,13 +18,14 @@ const UsersList = ({ usersList }) => {
   const endIndex = startIndex + itemsPerPage;
 
   const usersToDisplay = usersList.slice(startIndex, endIndex);
-  // debugger;
+
   return (
     <div className="main">
       <div className="first">
         <Search
           setCurrentPage={setCurrentPage}
         />
+        <Sort />
         <div className="users">
           <div className="users__invisible">
             {usersToDisplay.map((user) => {

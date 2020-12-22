@@ -5,7 +5,6 @@ import secondicon from '../resources/medals/2nd.svg';
 import thirdicon from '../resources/medals/3rd.svg';
 
 const User = (props) => {
-  // debugger;
   const rawSort = users.sort((a, b) => b.pageviews - a.pageviews);
 
   let res = String(props.pageviews).split(/(?=(?:\d{3})+(?!\d))/).join(" ");

@@ -26,7 +26,7 @@ body {
 .first {
   display: flex;
   flex-direction: column;
-  height: 600px;
+  height: 635px;
   width: 450px;
   background-color: transparent;
   border-radius: 8px;
@@ -158,6 +158,31 @@ body {
   text-transform: uppercase;
   cursor: pointer;
   background-color: transparent;
+}
+
+.sort{
+  display: flex;
+  height: 35px;
+  font-size: 14px;
+
+  & button{
+    width: 50%;
+    background-color: #eaecf0;
+    color: rgba(22, 22, 22, 0.849);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: linear .2s;
+    &:hover {
+      background-color: #d5d8df;
+    }
+  }
+  & button:first-child{
+    border-right: 1px solid rgba(180, 180, 180, 0.712); 
+  }
+  & i{
+    margin-left: 10px;
+  }
 }
 
 @media screen 

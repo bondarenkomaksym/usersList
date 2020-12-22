@@ -12,7 +12,7 @@ const Pagination = ({ setCurrentPage, currentPage, usersList, itemsPerPage, endI
   const lastUser = rest === endIndex ? 0 : rest;
 
   const totalPages = Math.ceil(usersList.length / itemsPerPage);
-  // debugger;
+
   currentPage === 0 ? isPrevPageAvaible = true : false;
   currentPage === totalPages - 1 ? isNextPageAvaible = true : false;
   usersList.length === 0 ? isPrevPageAvaible = true : null;
