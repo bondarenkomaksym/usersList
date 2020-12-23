@@ -7,12 +7,6 @@ export const usersListSelector = state => {
 export const filterTextSelector = state => {
   return state.users.filterText;
 };
-export const isAscendingNames = state => {
-  return state.isAscendingNames;
-};
-// export const filterTextSelector = state => {
-//   return state.users.filterText;
-// };
 
 export const filteredUsers = createSelector(
   [usersListSelector, filterTextSelector],

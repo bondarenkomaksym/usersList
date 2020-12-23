@@ -29,13 +29,13 @@ const usersReducer = (state = initialState, action) => {
       };
     }
     case SORT_USERVIEWS: {
-      const copyV = JSON.parse(JSON.stringify(state.usersList));
+      const copy = JSON.parse(JSON.stringify(state.usersList));
       return {
         ...state,
         isAscendingViews: !state.isAscendingViews,
-        usersList: copyV.sort((a, b) => {
-          const ascV = state.isAscendingViews ? 1 : -1;
-          return ascV * a.pageviews.toString().localeCompare(b.pageviews.toString());
+        usersList: copy.sort((a, b) => {
+          const asc = state.isAscendingViews ? 1 : -1;
+          return asc * a.pageviews.toString().localeCompare(b.pageviews.toString());
         }),
       };
     }
