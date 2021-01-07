@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect';
 
 export const usersListSelector = state => {
-  return state.users.usersList;
+  return state.usersList;
 };
 
 export const filterTextSelector = state => {
-  return state.users.filterText;
+  return state.filterText;
 };
 
 export const filteredUsers = createSelector(
